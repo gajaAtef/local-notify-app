@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notify</title>
+</head>
+<body>
+  <h1>Employee Notifications</h1>
+  <div id="messages"></div>
+
+  <script>
+    setInterval(async () => {
+      const res = await fetch('http://192.168.1.100:3000/messages');
+      const data = await res.json();
+      document.getElementById('messages').innerHTML = data.map(m => `<p>${m}</p>`).join('');
+    }, 5000);
+  </script>
+</body>
+</html>
